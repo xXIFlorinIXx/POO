@@ -4,20 +4,19 @@ using namespace std;
 //Sa se scrie un program in c++ pentru gestiunea unei gradinit zoologice folosind clase obiecte, derivate, vom avea o clasa animal din care vom deriva, de ex clasa pasari in care avem lungimea arimplor varsta, pt caine rasa 
 
 class Animale {
-private:
-	int numar_animale;
+	static int numar_animale;
 public:
 	void afisare_nr()
 	{
 		cout << numar_animale << endl;
 	}
-	Animale(int nr)
+	Animale()
 	{
-		this->numar_animale = nr;
+		Animale::numar_animale = Animale::numar_animale + 1;
 	}
 
 };
-
+int Animale::numar_animale = 0;
 class Caini : public Animale
 {
 private:
@@ -25,7 +24,7 @@ private:
 	string rasa;
 	bool dresat;
 public:
-	Caini(int nr, int varsta, string rasa, bool dresat):Animale(nr)
+	Caini(int varsta, string rasa, bool dresat):Animale()
 	{
 		this->varsta = varsta;
 		this->rasa = rasa;
@@ -38,7 +37,7 @@ public:
 			cout << " DA ";
 		else
 			cout << " NU ";
-		cout << "\nNumarul de animale asemanatoare: ";
+		cout << "\nNumarul de animale: ";
 		afisare_nr();
 		cout << endl;
 	}
@@ -47,7 +46,8 @@ public:
 
 int main()
 {
-	Caini s(3, 31, "Maidanez", 1);
+	Caini s(31, "Maidanez",1);
+	Caini s2(21, "Bison", 1);
 	s.afisare();
 	return 0;
 }
