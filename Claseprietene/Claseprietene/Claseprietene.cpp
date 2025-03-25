@@ -16,6 +16,14 @@ public:
 	{
 		cout << "Nume: " << nume << " Varsta: " << varsta << endl;
 	}
+
+	string Getnume() const {
+		return nume;
+	}
+
+	int GetVarsta() const {
+		return varsta;
+	}
 };
 
 class student : public persoana {
@@ -30,6 +38,10 @@ public:
 	void afisare()
 	{
 		cout << "Nume: " << nume << " Varsta: " << varsta << " Medie: " << medie << endl;
+	}
+	//suprascirerea operatorului >
+	bool operator>(const student& celalalt_obiect) const {
+		return this->medie > celalalt_obiect.medie;
 	}
 
 };
@@ -59,5 +71,11 @@ int main()
 
 	admin.afiseazaDetaliistudent(s1);
 	admin.afiseazaDetaliistudent(s2);
+
+	if (s1 > s2)
+		cout << s1.Getnume() << " are media mai mare decat " << s2.Getnume() << endl;
+	else
+		cout << s2.Getnume() << " are media mai mare decat " << s1.Getnume() << endl;
+
 	return 0;
 }
