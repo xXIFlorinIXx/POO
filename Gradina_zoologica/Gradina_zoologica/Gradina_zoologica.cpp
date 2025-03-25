@@ -18,7 +18,7 @@ public:
 };
 int Animale::numar_animale = 0;
 class Caini : public Animale
-{
+{	
 private:
 	int varsta;
 	string rasa;
