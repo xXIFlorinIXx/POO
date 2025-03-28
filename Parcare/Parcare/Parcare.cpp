@@ -75,6 +75,8 @@ public:
 void total_tarif(Informatii_masini_parcate& s)//in acesta functie socotim diferenta dintre ora de plecare si ora de sosire afisand la final totalul de plata
 {
 	Parcare::locuri_ocupate[s.loc_ocupat - 1] = 0;//marcam la liber locul ocupat de masina x
+	Parcare::nr_locuri_disponibile++;
+	Parcare::nr_locuri_ocupate--;
 	cout << "Intordu ora plecarii pentru masina cu numarul " << s.nr_inmatriculare << ' ';
 	string orap;
 	getline(cin, orap);
@@ -165,7 +167,9 @@ int main()
 	for (int i = 0; i < n; i++)
 		admin.afisare_date_masina(*masini[i]);
 
+	status_parcare();
 	total_tarif(*masini[0]);
+	status_parcare();
 	string nri;
 	string ora;
 	cout << "Introdu numarul de inmatriculare al masini: ";
