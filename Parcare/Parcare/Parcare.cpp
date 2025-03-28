@@ -69,8 +69,7 @@ public:
 	{
 		cout <<  "Locul ocupat este: " <<  this->loc_ocupat << endl;
 	}
-
-
+	~Informatii_masini_parcate() {};//destructor
 	friend void total_tarif(Informatii_masini_parcate& s);
 };
 void total_tarif(Informatii_masini_parcate& s)//in acesta functie socotim diferenta dintre ora de plecare si ora de sosire afisand la final totalul de plata
