@@ -57,7 +57,6 @@ class Informatii_masini_parcate : public Parcare {
 private:
 	string nr_inmatriculare;
 	string ora_s;
-	string ora_p;
 	friend class Admin;
 public:
 	Informatii_masini_parcate(string nr_inmatriculare, string ora):Parcare()//constructor
@@ -77,7 +76,7 @@ void total_tarif(Informatii_masini_parcate& s)//in acesta functie socotim difere
 	Parcare::locuri_ocupate[s.loc_ocupat - 1] = 0;//marcam la liber locul ocupat de masina x
 	Parcare::nr_locuri_disponibile++;
 	Parcare::nr_locuri_ocupate--;
-	cout << "Intordu ora plecarii pentru masina cu numarul " << s.nr_inmatriculare << ' ';
+	cout << "Introdu ora plecarii pentru masina cu numarul " << s.nr_inmatriculare << ' ';
 	string orap;
 	getline(cin, orap);
 	string oras = s.ora_s;
@@ -132,6 +131,7 @@ void total_tarif(Informatii_masini_parcate& s)//in acesta functie socotim difere
 	if (minr > 0)
 		difo++;
 	cout << "Totalul de plata este: " << difo*t << ' ' << moneda << endl;
+	
 }
 //cream o clasa admin prietena a clasei informatii masini parcate pentru a avea acces la toate datele legate de masinile din parcare
 class Admin
