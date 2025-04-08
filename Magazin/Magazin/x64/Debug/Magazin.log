@@ -1,0 +1,3 @@
+﻿  Magazin.cpp
+C:\Users\Florin\Desktop\POO\Magazin\Magazin\Magazin.cpp(100,51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Magazin.vcxproj -> C:\Users\Florin\Desktop\POO\Magazin\x64\Debug\Magazin.exe

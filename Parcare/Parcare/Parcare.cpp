@@ -1,7 +1,8 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
-
+ofstream fout("Test.txt");
 
 //Creare clasa parcare in care retinem numarul de locuri disponiile numarul de locuri ocupate si numarul de locuri totale
 class Parcare {
@@ -32,7 +33,10 @@ public:
 	friend void locuri_libere();
 	friend void status_parcare();
 
+
 };
+
+
 
 void status_parcare()
 {
@@ -133,6 +137,12 @@ void total_tarif(Informatii_masini_parcate& s)//in acesta functie socotim difere
 	cout << "Totalul de plata este: " << difo*t << ' ' << moneda << endl;
 	
 }
+
+ostream& operator<<(ostream &display, Informatii_masini_parcate s)
+{
+	display << "Masina este parcata pe locullll: " << s.loc_ocupat << ' ' << endl;
+	return display;
+}
 //cream o clasa admin prietena a clasei informatii masini parcate pentru a avea acces la toate datele legate de masinile din parcare
 class Admin
 {
@@ -180,5 +190,7 @@ int main()
 
 	admin.afisare_date_masina(masina_noua);
 
+	fout << masina_noua;
+	fout << *masini[1];
 	return 0;
 }
