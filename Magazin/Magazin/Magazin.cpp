@@ -17,10 +17,10 @@ public:
 	int numar_total_produse = 0;
 	Magazin() 
 	{
-		cout << "Introdu numele magazinului: "; getline(cin,this->nume_magazin);
-		cout << "Introdu adresa magazinului: "; getline(cin,this->adresa_magazin);
-		cout << "Introdu numarul de contact al magazinului: "; getline(cin,this->numar_de_contact_magazin);
-		cout << "Introdu adresa de email: "; getline(cin, this->adresa_email);
+		cout << "Nume magazin: "; getline(cin,this->nume_magazin);
+		cout << "Adresa magazin: "; getline(cin,this->adresa_magazin);
+		cout << "Numar de contact: "; getline(cin,this->numar_de_contact_magazin);
+		cout << "Adresa de email: "; getline(cin, this->adresa_email);
 	}
 	void denumire()
 	{
@@ -55,6 +55,8 @@ public:
 		cout << "Informatii: " << endl;
 		cout << "Numar de produse diferite: " << s.numar_produse_diferite << endl;
 		cout << "Cantitatea totala de produse din magazin este: " << s.numar_total_produse << endl;
+		cout << "Numar mediu de clienti: " << s.numar_mediu_de_clienti << endl;
+		cout << "Numar de cilenti care au intrat in magazin: " << s.numar_de_clienti << endl;
 		cout << "---------------------------------------------------------" << endl;
 		cout << endl;
 	}
