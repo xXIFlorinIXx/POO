@@ -11,8 +11,8 @@ public:
 	string adresa_magazin;
 	string numar_de_contact_magazin;
 	string adresa_email;
-	string produse[1000] = {};
-	int pret_produse[1000] = {};
+	string produse[1000] = {};//lista de produse existente
+	int pret_produse[1000] = {};//pretul produselor 
 	int numar_produse_diferite = 0;
 	int numar_total_produse = 0;
 	Magazin()//Constructor
@@ -86,7 +86,7 @@ public:
 	int cantitate;
 	string data_expiriare;
 	string data_primire;
-	Magazin& shop;//Memeorez in ce magazin a ajuns produsul
+	Magazin& shop;//Memorez in ce magazin a ajuns produsul
 	bool Verificare_produs_in_stoc(string nume, string prod[], int nr)//caut in lista de produse daca exista produsl pe care il aduc acum
 	{
 		for (int i = 1; i <= nr; i++)
@@ -114,7 +114,7 @@ public:
 		s.numar_total_produse += this->cantitate;//actualizez cantitatea totala de produse
 		cout << endl;
 	}
-	~Produse()//destructor
+	~Produse()
 	{
 
 	}
@@ -139,7 +139,6 @@ int main()
 	M1.date_de_contact();
 	M1.adresa();
 	M1.denumire();
-	M1.date_de_contact();
 
 	Produse P1(M1);
 
