@@ -4,8 +4,8 @@ using namespace std;
 
 class Magazin {
 private:
-	int numar_mediu_de_clienti = 0;
-	int numar_de_clienti = 0;
+	int numar_mediu_de_clienti = 0;//media pe zi de clienti
+	int numar_de_clienti = 0;//nr total de clienti
 public:
 	string nume_magazin;
 	string adresa_magazin;
@@ -15,40 +15,49 @@ public:
 	int pret_produse[1000] = {};
 	int numar_produse_diferite = 0;
 	int numar_total_produse = 0;
-	Magazin() 
+	Magazin()//Constructor
 	{
 		cout << "Nume magazin: "; getline(cin,this->nume_magazin);
 		cout << "Adresa magazin: "; getline(cin,this->adresa_magazin);
 		cout << "Numar de contact: "; getline(cin,this->numar_de_contact_magazin);
 		cout << "Adresa de email: "; getline(cin, this->adresa_email);
+		cout << endl;
+	}
+	~Magazin()
+	{
+
 	}
 	void denumire()
 	{
 		cout << "Nume magazin: " << this->nume_magazin << endl;
+		cout << endl;
 	}
 	void adresa()
 	{
 		cout << "Adresa magazinului: " << this->nume_magazin << " este " << this->adresa_magazin << endl;
+		cout << endl;
 	}
 	void date_de_contact()
 	{
 		cout << "Numarul de contact al magazinului " << this->nume_magazin << " este " << this->numar_de_contact_magazin << 
 			" si email-ul este " << this->adresa_email << endl;
+		cout << endl;
 	}
 	void Afisare_produse()
 	{
-		for (int i = 1; i <= numar_produse_diferite; i++)
+		for (int i = 1; i <= numar_produse_diferite; i++)//ma plimb prin lista de produse si afisez si pretul produsului
 		{
 			cout << i << ": " << this->produse[i] << " Pret: " << this->pret_produse[i] << endl;
 		}
+		cout << endl;
 	}
-	friend void Informatii_magazin(Magazin& s);
-	friend class Admin;
+	friend class Admin;//clasa prietena
+	friend void Informatii_magazin(Magazin& s);//functie prietena, specific pentru ce magazin afisez informatiile
 };
 
 class Admin {
 public:
-	void afisare_informatii(const Magazin& s)
+	void afisare_informatii(const Magazin& s)//am folosit & pentru a nu crea in memorie o copie a magazinului
 	{
 		cout << "--------------------------ADMIN--------------------------" << endl;
 		cout << "Nume magazin: " << s.nume_magazin << endl;
@@ -56,12 +65,12 @@ public:
 		cout << "Numar de produse diferite: " << s.numar_produse_diferite << endl;
 		cout << "Cantitatea totala de produse din magazin este: " << s.numar_total_produse << endl;
 		cout << "Numar mediu de clienti: " << s.numar_mediu_de_clienti << endl;
-		cout << "Numar de cilenti care au intrat in magazin: " << s.numar_de_clienti << endl;
+		cout << "Numar de clienti care au intrat in magazin: " << s.numar_de_clienti << endl;
 		cout << "---------------------------------------------------------" << endl;
 		cout << endl;
 	}
 };
-void Informatii_magazin(Magazin& s)
+void Informatii_magazin(Magazin& s)//
 {
 	cout << "Nume magazin: " << s.nume_magazin << endl;
 	cout << "Adresa magazin: " << s.adresa_magazin << endl;
@@ -70,24 +79,25 @@ void Informatii_magazin(Magazin& s)
 	cout << endl;
 }
 
-class Produse : public Magazin {
+class Produse : public Magazin {//clasa produse este derivata din magazin
 public:
 	string nume_produs;
 	float pret;
 	int cantitate;
 	string data_expiriare;
 	string data_primire;
-	Magazin& shop;
-	bool Verificare_produs_in_stock(string nume, string prod[], int nr)
+	Magazin& shop;//Memeorez in ce magazin a ajuns produsul
+	bool Verificare_produs_in_stoc(string nume, string prod[], int nr)//caut in lista de produse daca exista produsl pe care il aduc acum
 	{
 		for (int i = 1; i <= nr; i++)
 		{
-			if (prod[i] == nume)
+			if (prod[i] == nume)//in momentul in care gasesc produsul in stoc returnez ca l-am gasit (adica 1/adevarat)
 				return 1;
 		}
-		return 0;
+		return 0;//daca am ajuns la finalul liste insemna ca prdusul nu este deja in magazin si returnez 0 (false)
 	}
-	Produse(Magazin& s) : shop(s), Magazin(s)
+	//constructor
+	Produse(Magazin& s) : shop(s), Magazin(s)//creaz un produs si il leg de un produs existent, -shop(s) memoreaza unde este produsul, Magazin(s) - sa nu imi mai ceara cand creez un magazin cand creez un produs
 	{
 		cout << "Nume produs: "; getline(cin,this->nume_produs);
 		cout << "Pretul produs: "; cin >> this->pret;
@@ -95,13 +105,18 @@ public:
 		cin.get();
 		cout << "Data expirari acestui lot: "; getline(cin,this->data_expiriare);
 		cout << "Data primiri lotului: "; getline(cin,this->data_primire);
-		if (Verificare_produs_in_stock(this->nume_produs, s.produse, s.numar_produse_diferite) == 0)
+		if (Verificare_produs_in_stoc(this->nume_produs, s.produse, s.numar_produse_diferite) == 0)
 		{
 			s.numar_produse_diferite++;
-			s.produse[s.numar_produse_diferite] = this->nume_produs;
-			s.pret_produse[s.numar_produse_diferite] = this->pret;
+			s.produse[s.numar_produse_diferite] = this->nume_produs;//imi adauga produsul nou in lista de produse
+			s.pret_produse[s.numar_produse_diferite] = this->pret;//retin pretul produsului nou pe aceasi pozitie/index ca si numele 
 		}
-		s.numar_total_produse += this->cantitate;
+		s.numar_total_produse += this->cantitate;//actualizez cantitatea totala de produse
+		cout << endl;
+	}
+	~Produse()//destructor
+	{
+
 	}
 	void Informatii_produs()
 	{
@@ -138,10 +153,5 @@ int main()
 	admin.afisare_informatii(M1);
 	M1.Afisare_produse();
 
-	/*
-	De adaugat endl dupa fiecare functie de citire/afisare
-	Sa verific daca merg toate functiile
-	Verificare text si logica
-	*/
 	return 0;
 }
