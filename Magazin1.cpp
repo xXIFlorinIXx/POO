@@ -70,7 +70,7 @@ public:
 	}
 	bool Verificare_date()
 	{
-		Magazin& s = *this;
+		Magazin& s = *this;//folosesc variabila s cu referinta penru a nu scrie this-> 
 		if (!s.Verificare_email())
 			cout << "Adresa de email a magazinului " << s.nume_magazin << " nu este buna!" << endl;
 		while (!s.Verificare_email() && s.adresa_email != "x" && s.adresa_email != "X")
@@ -130,7 +130,7 @@ public:
 	string data_expiriare;
 	string data_primire;
 	Magazin *shop;//Memorez in ce magazin a ajuns produsul
-	bool Verificare_Data(string data)
+	bool Verificare_Data(string data)//data pusa trebuie sa fie de forma dorita
 	{
 		bool ok = 0;
 		int nr = 0;
@@ -152,7 +152,7 @@ public:
 		cout << "Data trebuie sa fie de forma zz:ll:aaaa\nData: ";
 		return 0;
 	}
-	bool Corectitudine_Data(string data)
+	bool Corectitudine_Data(string data)//data sa poata exista
 	{
 		if (!Verificare_Data(data))
 			return 0;
@@ -255,7 +255,7 @@ public:
 
 		return 1;
 	}
-	bool Comparare_Date(string data1, string data2)
+	bool Comparare_Date(string data1, string data2)//verifica daca data1 este mai mica decat data 2
 	{
 		if (!Corectitudine_Data(data1) || !Corectitudine_Data(data2))
 			return 0;
@@ -329,7 +329,7 @@ public:
 	}
 	//constructor
 
-	Produse(Magazin& s) : Magazin(s)//creaz un produs si il leg de un produs existent, -shop(s) memoreaza unde este produsul, Magazin(s) - sa nu imi mai ceara cand creez un magazin cand creez un produs
+	Produse(Magazin& s) : Magazin(s)//creaz un produs si il leg de un magazin existent Magazin(s) - sa nu imi mai ceara cand creez un magazin cand creez un produs
 	{
 		cout << "Nume produs: "; getline(cin,this->nume_produs);
 		cout << "Pretul produs: "; cin >> this->pret;
@@ -359,7 +359,7 @@ public:
 		}
 		else
 		{
-			shop = &s;
+			shop = &s;//memorez in ce magazin este produsul
 			if (Verificare_produs_in_stoc(this->nume_produs, s.produse, s.numar_produse_diferite) == 0)
 			{
 				s.numar_produse_diferite++;
@@ -386,11 +386,12 @@ public:
 		else
 			cout << "Produsul " << this->nume_produs << " nu face parte dintr-un magazin!" << endl << endl;
 	}
-	bool operator<(const Produse& s) const
+	bool operator<(const Produse& s) const // definesc de inseamna < pentru obeictele porduse (compar preturile)
 	{
 		return this->pret < s.pret;
 	}
-	bool operator>(const Produse& s) const
+	bool operator>(const Produse& s) const //definesc de inseamna > pentru obeictele porduse (compar preturile)
+	{
 	{
 		return this->pret > s.pret;
 	}
