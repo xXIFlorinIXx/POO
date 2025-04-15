@@ -3,8 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Florin\\Desktop\\POO\\Magazin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E690C352-FA94-494F-B43B-317F78CC8B78}|Magazin\\Magazin.vcxproj|C:\\Users\\Florin\\Desktop\\POO\\Magazin\\Magazin\\Magazin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E690C352-FA94-494F-B43B-317F78CC8B78}|Magazin\\Magazin.vcxproj|solutionrelative:Magazin\\Magazin.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Florin\\Desktop\\POO\\Magazin1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,12 +22,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Magazin.cpp",
-              "DocumentMoniker": "C:\\Users\\Florin\\Desktop\\POO\\Magazin\\Magazin\\Magazin.cpp",
-              "RelativeDocumentMoniker": "Magazin\\Magazin.cpp",
-              "ToolTip": "C:\\Users\\Florin\\Desktop\\POO\\Magazin\\Magazin\\Magazin.cpp",
-              "RelativeToolTip": "Magazin\\Magazin.cpp",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAAAIUAAAAKAAAAAAAAAA==",
+              "Title": "Magazin1.cpp",
+              "DocumentMoniker": "C:\\Users\\Florin\\Desktop\\POO\\Magazin1.cpp",
+              "RelativeDocumentMoniker": "..\\Magazin1.cpp",
+              "ToolTip": "C:\\Users\\Florin\\Desktop\\POO\\Magazin1.cpp",
+              "RelativeToolTip": "..\\Magazin1.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-07T18:08:07.319Z",
               "EditorCaption": ""
